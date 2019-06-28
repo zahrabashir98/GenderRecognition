@@ -3,6 +3,7 @@ from scipy.io import wavfile
 import matplotlib.pyplot as plt
 from numpy import linspace
 import numpy as np
+import math
 
  # pick one file name:
  ###fName = '003_A_male_167Hz.wav'
@@ -70,3 +71,19 @@ plt.ylabel('ENERGY')
 plt.xlabel('FRAME')
 plt.show()
 # pyplot.autoscale(tight='both')
+
+fc = 20
+a = math.exp(-fc * 2 * np.pi / fs)
+STEs = []
+for n in range(len(signal)):
+    if n == 0:
+        STEs.append(a * 0 + signal[n] ** 2)           # base-case
+    else:
+        STEs.append(a * STEs[n - 1] + signal[n] ** 2)
+
+
+plt.plot(STEs)
+plt.title('Short-Time Energy')
+plt.ylabel('ENERGY')
+plt.xlabel('SAMPLE')
+plt.show()
