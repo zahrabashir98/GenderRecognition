@@ -6,7 +6,7 @@ import numpy as np
 import math
 import statistics 
 
-fName = '../data/female/fsms1_sx64.wav'
+fName = '../data/female/fsrh0_sx131.wav'
 
 fs, signal = wavfile.read(fName)
 
