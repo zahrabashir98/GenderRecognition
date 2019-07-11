@@ -1,0 +1,10 @@
+FEMALE:
+num_of_female_f:29
+num_of_male_f:36
+acc:0.446153846154
+*******
+MALE:
+num_of_female_f:7
+num_of_male_f:58
+acc:0.892307692308
+*******

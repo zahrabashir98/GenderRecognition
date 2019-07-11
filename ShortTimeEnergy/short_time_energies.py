@@ -12,7 +12,6 @@ signal_2_female = []
 
 import glob
 female_name_list = glob.glob("/home/zahra/Desktop/6th Semester/Signal/final_project/data/female/*.wav")
-male_name_list = glob.glob("/home/zahra/Desktop/6th Semester/Signal/final_project/data/male/*.wav")
 
 for name in female_name_list:
     # fName = '../data/male/mwrp0_sx183.wav'
@@ -108,7 +107,10 @@ with open ("result1_f.txt", "w") as file1:
 
 with open ("result2_f.txt", "w") as file1:
     file1.write(str(signal_2_female)+"\nAverage:%s"%avg2)
-
+print(max(signal_1_female))
+print(min(signal_1_female))
+print(max(signal_2_female))
+print(min(signal_2_female))
 
 
 import glob
@@ -181,3 +183,7 @@ with open ("result1_m.txt", "w") as file1:
 
 with open ("result2_m.txt", "w") as file1:
     file1.write(str(signal_2_male)+"\nAverage:%s"%avg2)
+print(max(signal_1_male))
+print(min(signal_1_male))
+print(max(signal_2_male))
+print(min(signal_2_male))
