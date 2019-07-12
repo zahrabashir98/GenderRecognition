@@ -12,8 +12,7 @@ female_name_list = glob.glob("/home/zahra/Desktop/6th Semester/Signal/final_proj
 num_of_female_f = 0
 num_of_male_f = 0
 no_detection_f = 0
-
-
+avg_list_f = []
 
 for name in female_name_list:
     fs, signal = wavfile.read(name)
@@ -34,7 +33,21 @@ for name in female_name_list:
         window[startIdx:stopIdx] = 1               # rectangular window
         STE = sum((signal ** 2) * (window ** 2))
         STEs.append(STE)
+    count = 0
+    summ = 0
+    for data in STEs:
+        if data >0.01:
+            summ += data
+            count += 1
+    print(summ/count)
+    avg_list_f.append(summ/count)
+    print(sum(STEs)/len(STEs))
 
+    # # print(STEs)
+    # print(sum(STEs)/len(STEs))
+    # print(max(STEs))
+    # print(min(STEs))
+    print("**********************")
     # plt.plot(STEs)
     # plt.title('Short-Time Energy')
     # plt.ylabel('ENERGY')
@@ -50,7 +63,7 @@ for name in female_name_list:
     else:
         if max(STEs) <20:
             num_of_male_f += 1
-        elif max>20:
+        elif max(STEs)>20:
             num_of_female_f += 1
         # print("BISEXUAL ")
         # no_detection_f += 0
@@ -63,6 +76,7 @@ print("ACCURACY:",acc_f)
 num_of_female_m = 0
 num_of_male_m = 0
 no_detection_m = 0
+avg_list_m = []
 male_name_list = glob.glob("/home/zahra/Desktop/6th Semester/Signal/final_project/data/male/*.wav")
 for name in male_name_list:
     fs, signal = wavfile.read(name)
@@ -91,7 +105,18 @@ for name in male_name_list:
     # plt.ylabel('ENERGY')
     # plt.xlabel('SAMPLE')
     # plt.show()
-
+    summ = 0
+    count = 0
+    for data in STEs:
+        if data >0.01:
+            summ += data
+            count += 1
+    print(summ/count)
+    print(sum(STEs)/len(STEs))
+    avg_list_m.append(summ/count)
+    # print(max(STEs))
+    # print(min(STEs))
+    print("**********************")
     if max(STEs) <12.5 and max(STEs)>5:
         print("male")
         num_of_male_m += 1
@@ -99,9 +124,9 @@ for name in male_name_list:
         print("female")
         num_of_female_m += 1
     else:
-        if max(STEs) <20:
+        if max(STEs) < 20:
             num_of_male_m += 1
-        elif max>20:
+        elif max(STEs) > 20:
             num_of_female_m += 1
         # print("BISEXUAL ")
         # no_detection_m += 0
@@ -113,3 +138,24 @@ print("ACCURACY:",acc_m)
 
 with open("final_results.txt","w") as File:
     File.write("FEMALE:\nnum_of_female_f:%s\nnum_of_male_f:%s\nacc:%s\n*******\nMALE:\nnum_of_female_f:%s\nnum_of_male_f:%s\nacc:%s\n*******"%(num_of_female_f, num_of_male_f, acc_f, num_of_female_m, num_of_male_m, acc_m))
+
+avg_list_f.sort()
+avg_list_m.sort()   
+print(avg_list_f)
+print("AVG",sum(avg_list_f)/len(avg_list_f))
+print("median",avg_list_f[int(len(avg_list_f)/2)])
+print("******************************")
+print(avg_list_m)
+print("AVG", sum(avg_list_m)/len(avg_list_m))
+print("median", avg_list_m[int(len(avg_list_m)/2)])
+
+
+
+# some imporved rules:
+# if avg_energy > 2:
+#     print("female")
+# elif avg_energy <1.06 :
+#     #ghatiii
+#     print("male")
+# elif avg_energy >1.06 and avg_energy <2:
+#     print("no idea")
