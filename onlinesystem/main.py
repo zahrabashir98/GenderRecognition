@@ -53,7 +53,7 @@ def recognize(filename):
 
 "Default values"
 RATE = 20000
-RECORD_SECONDS = 2
+RECORD_SECONDS = 4
 
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
@@ -82,9 +82,9 @@ while (True):
     waveFile.setframerate(RATE)
     waveFile.writeframes(b''.join(frames))
     waveFile.close()
-
+    plt.plot()
     # rate, data = wav.read(WAVE_OUTPUT_FILENAME)
-    recognize(WAVE_OUTPUT_FILENAME)    
+    # recognize(WAVE_OUTPUT_FILENAME)    
     print("end of record\n")
 
 

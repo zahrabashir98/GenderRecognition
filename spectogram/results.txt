@@ -1,0 +1,10 @@
+FEMALE:
+average_psd: 441963.7732139902
+max_psd:60261850.0
+min_psd:1072369.1
+
+MALE:
+average_psd: 701645.1738367607
+max_psd:76735130.0
+min_psd:512441.06
+
