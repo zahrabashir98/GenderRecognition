@@ -22,5 +22,5 @@ def get_mfcc(y,sr):
 
     return mfcc_feature
 
-y, sr = librosa.load('../../data/female/fssb0_sx182.wav')
+y, sr = librosa.load('../../data/female/ftlg0_sx33.wav')
 print(get_mfcc(y,sr))

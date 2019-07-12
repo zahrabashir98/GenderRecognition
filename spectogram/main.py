@@ -137,3 +137,4 @@ av_2.sort()
 with open("results.txt", "w") as file1:
     file1.write("FEMALE:\naverage_psd: %s\nmax_psd:%s\nmin_psd:%s\n\nMALE:\naverage_psd: %s\nmax_psd:%s\nmin_psd:%s\n\n"
     %(sum(av_1)/ len(av_1),max(psdList_female),min(psdList_female),sum(av_2)/ len(av_2), max(psdList_male), min(psdList_male)))
+

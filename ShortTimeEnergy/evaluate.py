@@ -126,8 +126,10 @@ for name in male_name_list:
     else:
         if max(STEs) < 20:
             num_of_male_m += 1
+            prin("male")
         elif max(STEs) > 20:
             num_of_female_m += 1
+            print("female")
         # print("BISEXUAL ")
         # no_detection_m += 0
     
