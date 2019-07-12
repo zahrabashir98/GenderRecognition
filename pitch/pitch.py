@@ -39,8 +39,21 @@ for name in male_name_list:
     fs, signal = wavfile.read(name)
     male_list.append(get_pitch(fs,signal))
 
+female_list.sort()
+print(female_list)
+print("AVG,", sum(female_list)/len(female_list))
+male_list.sort()
+print(male_list)
+print("AVG", sum(male_list)/ len(male_list))
+
+print("****************MAX MIN********************")
 print(max(female_list))
 print(min(female_list))
-print()
+# print()
 print(max(male_list))
 print(min(male_list))
+
+
+with open("results.txt","w") as file1:
+    file1.write("female_average: %s\nfemale_max: %s\nfemale_min: %s\n\nmale_average: %s\nmale_max: %s\nmale_min: %s\n"
+    %(sum(female_list)/len(female_list), max(female_list), min(female_list), sum(male_list)/ len(male_list), max(male_list), min(male_list)))
